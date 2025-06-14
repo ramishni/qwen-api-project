@@ -1,0 +1,20 @@
+name: Create GitHub Issue
+
+on:
+  repository_dispatch:
+    types: [create_my_issue]
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Issue
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: 'New Issue from Agent'
+          content-filepath: '.github/ISSUE_TEMPLATE/agent_issue.md'
+          labels: 'agent-triggered'
+          assignees: 'ramishni' # Replace with your GitHub username
