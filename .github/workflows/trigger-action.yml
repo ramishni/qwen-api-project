@@ -1,0 +1,22 @@
+name: Triggered Action Demo
+
+on:
+  repository_dispatch:
+    types: [trigger_file_creation]
+
+jobs:
+  create_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create a new file
+        run: |
+          echo "This file was created by a GitHub Action triggered from an external source." > triggered_by_action.txt
+          echo "Triggered at $(date)" >> triggered_by_action.txt
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add triggered_by_action.txt
+          git commit -m "Add triggered_by_action.txt"
+          git push
