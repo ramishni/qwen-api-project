@@ -1,9 +1,9 @@
-name: Build Flask App
+name: Build FastAPI App
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
