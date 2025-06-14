@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+httpx
+langchain
+langchain-openai
+qwen-agent[code_interpreter]
+python-dateutil
+chromadb
+dashscope

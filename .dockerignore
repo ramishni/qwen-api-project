@@ -1,0 +1,22 @@
+# Ignore version control folders
+.git
+.github
+
+# Ignore Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local virtual environment
+.venv/
+virtualenv/
+env/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
