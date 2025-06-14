@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install Flask
+RUN pip install "fastapi[all]" uvicorn
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
