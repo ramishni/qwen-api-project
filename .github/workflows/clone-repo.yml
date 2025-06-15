@@ -1,0 +1,21 @@
+name: Clone Repository
+
+on:
+  repository_dispatch:
+    types: [clone_repository]
+
+jobs:
+  clone_and_list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.client_payload.repo_url }}
+          ref: ${{ github.event.client_payload.branch }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }} # Use the PAT for private repos
+
+      - name: List cloned repository contents
+        run: |
+          echo "Repository cloned successfully!"
+          ls -la
